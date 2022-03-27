@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Ring from '../Ring/Ring';
+import './Jewellery.css';
 
 const Jewellery = () => {
+    const [ornaments, setOrnaments] = useState([])
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/photos')
+            .then(res => res.json())
+            .then(data => setOrnaments(data));
+
+    }, [])
     return (
-        <div>
-            <h2>jewellery</h2>
-            <div className="jewellery-item"></div>
-            <div className="selected-jewellery"></div>
+        <div className='shop-container'>
+            <div className="jewellery-container">
+                {
+                    ornaments.map(ornament => <Ring key={ornaments.id}
+                        ornaments={ornaments}></Ring>)
+                }
+            </div>
+            <div className="jewellery-item">
+                <h3>5</h3>
+            </div>
         </div>
     );
 };
