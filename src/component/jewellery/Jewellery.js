@@ -5,7 +5,7 @@ import './Jewellery.css';
 const Jewellery = () => {
     const [ornaments, setOrnaments] = useState([])
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/photos')
+        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
             .then(res => res.json())
             .then(data => setOrnaments(data));
 
